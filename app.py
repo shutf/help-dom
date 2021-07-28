@@ -32,7 +32,7 @@ def app():
 			if labels[label]=='Python' or labels[label]=='Julia':
 				st.write("Sorry, we don't run Python code here!")
 			else:
-				proc = subprocess.Popen(["python", datafile.name], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				proc = subprocess.Popen(["python", datafile.name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				try:
 					outs, errs = proc.communicate(timeout=30)
 				except TimeoutExpired:

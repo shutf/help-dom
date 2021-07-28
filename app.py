@@ -15,7 +15,7 @@ def app():
 	datafile = st.file_uploader("Upload File")
 	if datafile is not None and st.button("Upload"):
 		for file in os.listdir():
-			if file not in ['.git', 'app.py', 'LICENSE', 'model_autokeras', 'README.md', 'test.py', 'text_classifier', '.streamlit]:
+			if file not in ['.git', 'app.py', 'LICENSE', 'model_autokeras', 'README.md', 'test.py', 'text_classifier', '.streamlit']:
 				os.remove(file)
 		try:
 			datafile_bytes = datafile.read()

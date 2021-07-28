@@ -34,7 +34,7 @@ def app():
 			else:
 				proc = subprocess.Popen(["python", datafile.name], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				try:
-					outs, errs = proc.communicate(timeout=3)
+					outs, errs = proc.communicate(timeout=30)
 				except TimeoutExpired:
 					proc.kill()
 					outs, errs = proc.communicate()

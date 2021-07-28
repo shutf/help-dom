@@ -22,13 +22,13 @@ def app():
 			datafile_bytes_str = datafile_bytes.decode('utf-8')
 			with open(datafile.name, mode="w", encoding="utf-8") as f:
 				f.write(datafile_bytes_str)
-			st.write("Current Files:", os.listdir())
+			#st.write("Current Files:", os.listdir())
 			predicted_y = loaded_model.predict(np.array([datafile_bytes_str]))
 			predicted_y = predicted_y[0]
 			label = np.argmax(predicted_y)
 			predicted_y = [float(i) for i in predicted_y]
 			predicted_y = {labels[i]: round(predicted_y[i], 4) for i in range(8)}
-			st.write(predicted_y)
+			#st.write(predicted_y)
 			if labels[label]=='Python' or labels[label]=='Julia':
 				st.write("Sorry, we don't run Python code here!")
 			else:
@@ -38,9 +38,10 @@ def app():
 				except TimeoutExpired:
 					proc.kill()
 					outs, errs = proc.communicate()
-				st.write(outs, errs)
+				st.write("OUTPUT:", outs)
+				st.write("ERROR:", errs)
 			os.remove(datafile.name)
-			st.write("Current Files:", os.listdir())
+			#st.write("Current Files:", os.listdir())
 			if 'please.txt' in os.listdir():
 				st.write("You are Successful, the flag is nite\{stop-checking-the-github-repo\}")
 		except Exception as e:
